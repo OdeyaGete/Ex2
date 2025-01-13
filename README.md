@@ -1,2 +1,17 @@
-# Ex2
-הפונקציה isNumber בודקת אם הטקסט שניתן ניתן להמיר למספר, אם כן מחזירה true, אחרת מחזירה false. הפונקציה isText בודקת אם הטקסט הוא לא מספר וגם לא נוסחה, והיא עושה זאת על ידי קריאה לשתי הפונקציות האחרות. הפונקציה isForm בודקת אם הטקסט הוא נוסחה, כלומר אם הוא מתחיל ב-= ויש לו לפחות שני תווים. הפונקציה value מחזירה ערכים שונים לפי זוגות של קואורדינטות (x, y), כאשר ישנם ערכים קבועים שמתאימים למיקומים מסוימים, ובמקרה אחר מחזירה "55". הפונקציה computeForm מחשבת את הערך של נוסחה בצורה רקורסיבית: היא מסירה הפניות לתאים ומבצעת חישובים מתמטיים תוך כדי טיפול בסוגריים והפניות נוספות, עד שהנוסחה נפתרת למספר סופי. לבסוף, הפונקציה computeByOrder עוסקת בחישוב של פעולות מתמטיות בסדר הנכון: היא מוצאת את המפעילים הראשונים מתוך רשימת המפעילים שניתנה (*, /, +, -), מבצעת את החישוב וממשיכה עד שאין עוד פעולות לבצע.
+
+isNumber: Checks if a string can be converted to a number by trying to parse it.if it's successful, returns true, else, returns false.
+isText: Determines if a string is a regular text (not a number or formula) by using isNumber and isForm to confirm it.
+isForm: Checks if a string starts with '=' and has at least two characters, identifying it as a formula.
+value: Returns values based on given (x, y) coordinates.
+computeForm: Evaluates a formula- Resolves references (in case of another cell refrence) by using value.
+Handles parentheses and nested expressions.
+performs arithmetic operations (*, /, +, -) in order of "Order account operations".
+Recursively computes until the result is a single number.
+computeByOrder: A helper function Processes specific mathematical operations in a formula:
+Finds operators (*, /, +, -).
+Extracts operands, computes the result, and replaces the operation in the formula.
+repeats until no operators remain.
+get(x, y): Returns the cell at (x, y) in the table, throws an exception if the coordinates are out of bounds.
+set(x, y, c): Sets the cell c at (x, y) in the grid, throws an exception if the coordinates are invalid.
+
+
