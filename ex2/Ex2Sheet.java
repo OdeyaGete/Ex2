@@ -139,16 +139,33 @@ public class Ex2Sheet implements Sheet {
 
     @Override
     public void load(String fileName) throws IOException {
-        // Add your code here
-
-        /////////////////////
+        try (BufferedReader reader = new BufferedReader(new FileReader(fileName))){
+            String line;
+            while ((line = reader.readLine()) != null) {
+            }
+        } catch (IOException E) {
+            E.printStackTrace();
+        }
     }
 
     @Override
     public void save(String fileName) throws IOException {
-        // Add your code here
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
+            // Write the header line
+            writer.write("I2CS ArielU: SpreadSheet (Ex2) assignment - this line should be ignored in the load method");
+            writer.newLine();
 
-        /////////////////////
+            // Iterate through all cells and save only non-empty ones
+            for (int i = 0; i < width(); i++) {
+                for (int j = 0; j < height(); j++) {
+                    String cellValue = value(i, j);
+                    if (!cellValue.equals(Ex2Utils.EMPTY_CELL)) {  // Save non-empty cells only
+                        writer.write(i + "," + j + "," + cellValue);
+                        writer.newLine();
+                    }
+                }
+            }
+        }
     }
     /** we'll use the @value method above to get the string form of this cell
      * then, in order to compute we can use the computeForm method we've created on Cell
